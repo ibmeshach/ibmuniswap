@@ -1,8 +1,8 @@
-# Uniswap Exchange Contract
+# Uniswap Exchange Contract & Frontend
 
-This repository contains a Solidity contract for an Uniswap exchange. The contract allows users to swap between ETH and ERC20 tokens seamlessly. It provides functionalities such as liquidity provisioning, real-time pricing, and token swaps.
+This repository contains a Solidity contract for an Uniswap exchange, along with a frontend application that interacts with the contract. The contract allows users to seamlessly swap between ETH and ERC20 tokens, while the frontend provides a user-friendly interface to interact with the contract functionalities.
 
-## Features
+## Contract Features
 
 - `addLiquidity`: Allows users to provide liquidity to the exchange by depositing ERC20 tokens.
 - `getReserve`: Retrieves the current token reserve balance in the contract.
@@ -11,32 +11,41 @@ This repository contains a Solidity contract for an Uniswap exchange. The contra
 - `ethToTokenSwap`: Enables users to swap ETH for tokens.
 - `tokenToEthSwap`: Enables users to swap tokens for ETH.
 
+## Frontend Features
+
+- User-friendly interface to interact with the Uniswap exchange contract.
+- Display of current token reserves and real-time pricing.
+- Liquidity provision form to add liquidity to the exchange.
+- Swap form to easily swap between ETH and tokens.
+
 ## Getting Started
 
 ### Prerequisites
 
 - Solidity ^0.8.9
 - OpenZeppelin library for ERC20 token standard
+- Node.js
+- npm or yarn
 
-### Deployment
+### Installation
 
 1. Clone the repository: `git clone [repository URL]`
-2. Install dependencies: `npm install`
+2. Install dependencies for the contract: `cd contract && npm install`
 3. Deploy the contract by specifying the token address in the constructor.
+4. Install dependencies for the frontend: `cd ../frontend && npm install`
 
-## Usage
+### Usage
 
-1. Add Liquidity:
-   - Call the `addLiquidity` function with the desired amount of ERC20 tokens as a parameter.
-   - Transfer the ERC20 tokens to the contract using the `transferFrom` function.
+1. Start the client application:
+   - In the `frontend` directory, run `npm start`.
+   - Access the application in your web browser at `http://localhost:3000`.
 
-2. Swap ETH for Tokens:
-   - Call the `ethToTokenSwap` function, passing the minimum desired token amount as a parameter.
-   - Send the desired amount of ETH along with the function call.
-
-3. Swap Tokens for ETH:
-   - Approve the contract to spend the desired token amount using the `approve` function.
-   - Call the `tokenToEthSwap` function, providing the amount of tokens to be sold and the minimum desired ETH amount as parameters.
+2. Interact with the Uniswap exchange contract:
+   - Use the user-friendly interface provided by the frontend application to:
+     - Add liquidity by depositing ERC20 tokens.
+     - View current token reserves and pricing information.
+     - Swap between ETH and tokens by specifying the desired amounts.
+     - Monitor transaction history and account details.
 
 ## Contributing
 
