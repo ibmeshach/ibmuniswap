@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: GPL-3.0
+// SPDX-License-Identifier: MIT
 
 pragma solidity ^0.8.0;
 
@@ -11,13 +11,13 @@ contract CustomToken is ERC20 {
 }
 
 contract DUNISWAP_EXCHANGE {
-    string[] public tokens = [
+    string[] public tokenSymbol = [
         "Diamund Uniswap",
         "POLYGON",
         "SOLANA",
         "BINANCE"
     ];
-    string[] public tokensSymbol = ["DUNI", "MATIC", "SOL", "BNB"];
+    string[] public tokens = ["DUNI", "MATIC", "SOL", "BNB"];
     uint256[] public tokensVal = [
         100000000000000,
         300000000000000,
@@ -30,7 +30,7 @@ contract DUNISWAP_EXCHANGE {
 
     constructor() {
         for (uint i = 0; i < tokens.length; i++) {
-            CustomToken token = new CustomToken(tokens[i], tokensSymbol[i]);
+            CustomToken token = new CustomToken(tokens[i], tokens[i]);
             tokenInstanceMap[tokens[i]] = token;
             tokenEthValue[tokens[i]] = tokensVal[i];
         }
