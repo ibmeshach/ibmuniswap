@@ -280,4 +280,6 @@ const SwapComponent = () => {
   }
 };
 
+SwapComponent.displayName = "SwapComponent";
+
 export default SwapComponent;
