@@ -18,28 +18,30 @@ const Header = () => {
 
   useEffect(() => {
     setTokenBalComp(
-      <>
+      <div className="w-full grid grid-cols-2 gap-4 md:grid-cols-4">
         <TokenBalance name={"DUNI"} walletAddress={address} />
         <TokenBalance name={"MATIC"} walletAddress={address} />
         <TokenBalance name={"SOL"} walletAddress={address} />
         <TokenBalance name={"BNB"} walletAddress={address} />
-      </>
+      </div>
     );
 
     if (!address) notifyConnectWallet();
   }, [address]);
 
   return (
-    <div className="fixed left-0 top-0 w-full px-8 py-4 flex items-center justify-between">
-      <div className="flex items-center">
-        <img src="./uniswap.png" className="h-12" />
-        <NavItems />
+    <div className="fixed w-full top-4 px-8 py-4 md:py-0 flex-col items-center justify-between">
+      <div className="w-full flex gap-1 justify-center">
+        <div className="w-1/2 flex items-center justify-start">
+          <img src="./uniswap.png" className="h-12" />
+          <NavItems />
+        </div>
+        <div className="w-1/2 flex justify-end">
+          <ConnectButton className="mx-8" accountStatus={"full"} />
+        </div>
       </div>
-
-      <div className="flex items-center">{tokenBalComp}</div>
-
-      <div className="flex">
-        <ConnectButton className="mx-8" accountStatus={"full"} />
+      <div className="md:w-1/2 w-full mx-auto mt-2 justify-center flex items-center">
+        {tokenBalComp}
       </div>
 
       <Toaster />

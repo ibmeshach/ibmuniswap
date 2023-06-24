@@ -99,7 +99,7 @@ const SwapComponent = () => {
   }, [outputValue, srcToken]);
 
   return (
-    <div className="bg-zinc-900 w-[35%] p-4 px-6 rounded-xl">
+    <div className="bg-zinc-900 w-[85%] md:w-[35%] p-4 px-6 rounded-xl mt-24">
       <div className="flex items-center text-neutral-200 justify-between py-4 px-1">
         <p>Swap</p>
         <CogIcon className="h-6" />
@@ -193,18 +193,18 @@ const SwapComponent = () => {
     try {
       if (srcToken !== ETH && destToken !== ETH) setOutputValue(inputValue);
       else if (srcToken === ETH && destToken !== ETH) {
-        const outValue = toEth(toWei(inputValue, 14));
+        const outValue = toEth(toWei(inputValue, 18));
         if (destToken.toLowerCase() == "duni") {
-          setOutputValue(outValue * 10000000);
+          setOutputValue(outValue * 10000);
         }
         if (destToken.toLowerCase() == "apex") {
-          setOutputValue(outValue * 30000000);
+          setOutputValue(outValue * 3000);
         }
         if (destToken.toLowerCase() == "sol") {
-          setOutputValue(outValue * 23000000);
+          setOutputValue(outValue * 2300);
         }
         if (destToken.toLowerCase() == "bnb") {
-          setOutputValue(outValue * 44000000);
+          setOutputValue(outValue * 4400);
         }
       } else if (srcToken !== ETH && destToken === ETH) {
         const outValue = toEth(toWei(inputValue, 14) * 13);

@@ -10,31 +10,12 @@ const NavItems = () => {
   const [selectedNavItem, setSelectedNavItem] = useState(SWAP);
 
   return (
-    <div className="bg-zinc-900 text-white h-fit flex items-center justify-around rounded-full mx-6">
+    <div className="bg-zinc-900 text-white h-fit flex items-center justify-around rounded-full mx-1">
       <p
         className={getNavIconClassName(SWAP)}
         onClick={() => setSelectedNavItem(SWAP)}
       >
         {SWAP}
-      </p>
-      {/* <p
-        className={getNavIconClassName(POOL)}
-        onClick={() => setSelectedNavItem(POOL)}
-      >
-        {POOL}
-      </p>
-      <p
-        className={getNavIconClassName(VOTE)}
-        onClick={() => setSelectedNavItem(VOTE)}
-      >
-        {VOTE}
-      </p> */}
-      <p
-        className={getNavIconClassName(CHART)}
-        onClick={() => window.open("https://info.uniswap.org/#/", "_blank")}
-      >
-        {CHART}
-        <ArrowSmUpIcon className="h-4 rotate-45" />
       </p>
     </div>
   );
