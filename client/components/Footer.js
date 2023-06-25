@@ -20,8 +20,8 @@ const Header = () => {
   }, [address]);
 
   return (
-    <div className="hidden md:flex w-full justify-center   ">
-      <div className="flex items-center">{tokenBalComp}</div>
+    <div className="md:w-1/2 w-full mx-auto mt-2 justify-center flex items-center">
+      {tokenBalComp}
     </div>
   );
 };

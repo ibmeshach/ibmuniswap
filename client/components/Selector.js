@@ -14,9 +14,6 @@ const Selector = ({ defaultValue, ignoreValue, setToken, id }) => {
   const menu = [
     { key: ETH, name: ETH },
     { key: COINA, name: COINA },
-    { key: COINB, name: COINB },
-    { key: COINC, name: COINC },
-    { key: COIND, name: COIND },
   ];
 
   const [selectedItem, setSelectedItem] = useState();

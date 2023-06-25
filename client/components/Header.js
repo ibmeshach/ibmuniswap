@@ -18,11 +18,8 @@ const Header = () => {
 
   useEffect(() => {
     setTokenBalComp(
-      <div className="w-full grid grid-cols-2 gap-4 md:grid-cols-4">
+      <div className="w-full flex justify-center ">
         <TokenBalance name={"DUNI"} walletAddress={address} />
-        <TokenBalance name={"MATIC"} walletAddress={address} />
-        <TokenBalance name={"SOL"} walletAddress={address} />
-        <TokenBalance name={"BNB"} walletAddress={address} />
       </div>
     );
 

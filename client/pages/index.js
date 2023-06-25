@@ -6,7 +6,7 @@ import unavaliable from "../assets/unavaliable.png";
 export default function Home() {
   return (
     <>
-      <div className=" w-full min-h-screen my-0 gap-10 flex flex-col items-center justify-center bg-[#2D242F]">
+      <div className=" w-full min-h-screen my-0 gap-10 flex flex-col items-center justify-center bg-[rgba(251,17,142,0.4)]">
         <Header />
         <SwapComponent />
         {/* <Footer /> */}

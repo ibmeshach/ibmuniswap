@@ -56,8 +56,8 @@ const SwapComponent = () => {
   const [swapBtnText, setSwapBtnText] = useState(ENTER_AMOUNT);
   const [txPending, setTxPending] = useState(false);
 
-  const notifyError = (msg) => toast.error(msg, { duration: 6000 });
-  const notifySuccess = () => toast.success("Transaction completed.");
+  const notifyError = (msg) => toast.error(msg, { duration: 3000 });
+  const notifySuccess = () => toast.success("Swap successful.");
 
   const { address } = useAccount();
 
@@ -99,21 +99,21 @@ const SwapComponent = () => {
   }, [outputValue, srcToken]);
 
   return (
-    <div className="bg-zinc-900 w-[85%] md:w-[35%] p-4 px-6 rounded-xl mt-24">
-      <div className="flex items-center text-neutral-200 justify-between py-4 px-1">
+    <div className="bg-zinc-100 w-[85%] md:w-[35%] p-4 px-6 rounded-xl mt-24">
+      <div className="flex items-center text-neutral-800 justify-between py-4 px-1">
         <p>Swap</p>
         <CogIcon className="h-6" />
       </div>
-      <div className="relative bg-[#212429] p-4 py-6 rounded-xl mb-2 border-[2px] border-transparent hover:border-zinc-600">
+      <div className="relative bg-neutral-300 p-4 py-6 rounded-xl mb-2 border-[2px] border-transparent hover:border-zinc-600">
         {srcTokenComp}
 
         <ArrowSmDownIcon
-          className="absolute left-1/2 -translate-x-1/2 -bottom-6 h-10 p-1 bg-[#212429] border-4 border-zinc-900 text-zinc-300 rounded-xl cursor-pointer hover:scale-110"
+          className="absolute left-1/2 -translate-x-1/2 -bottom-6 h-10 p-1 bg-neutral-300 border-2 border-zinc-600 text-zinc-900 rounded-xl cursor-pointer hover:scale-110"
           onClick={handleReverseExchange}
         />
       </div>
 
-      <div className="bg-[#212429] p-4 py-6 rounded-xl mt-2 border-[2px] border-transparent hover:border-zinc-600">
+      <div className="bg-neutral-300 p-4 py-6 rounded-xl mt-2 border-[2px] border-transparent hover:border-zinc-600">
         {destTokenComp}
       </div>
 
@@ -158,12 +158,7 @@ const SwapComponent = () => {
   }
 
   function handleReverseExchange(e) {
-    // Setting the isReversed value to prevent the input/output values
-    // being calculated in their respective side - effects
     isReversed.current = true;
-
-    // 1. Swap tokens (srcToken <-> destToken)
-    // 2. Swap values (inputValue <-> outputValue)
 
     setInputValue(outputValue);
     setOutputValue(inputValue);
@@ -176,7 +171,7 @@ const SwapComponent = () => {
     let className = "p-4 w-full my-2 rounded-xl";
     className +=
       swapBtnText === ENTER_AMOUNT || swapBtnText === CONNECT_WALLET
-        ? " text-zinc-400 bg-zinc-800 pointer-events-none"
+        ? " text-zinc-900 bg-[rgba(251,17,142,0.4)] pointer-events-none"
         : " bg-blue-700";
     className += swapBtnText === INCREASE_ALLOWANCE ? " bg-yellow-600" : "";
     return className;
@@ -197,29 +192,9 @@ const SwapComponent = () => {
         if (destToken.toLowerCase() == "duni") {
           setOutputValue(outValue * 10000);
         }
-        if (destToken.toLowerCase() == "apex") {
-          setOutputValue(outValue * 3000);
-        }
-        if (destToken.toLowerCase() == "sol") {
-          setOutputValue(outValue * 2300);
-        }
-        if (destToken.toLowerCase() == "bnb") {
-          setOutputValue(outValue * 4400);
-        }
       } else if (srcToken !== ETH && destToken === ETH) {
         const outValue = toEth(toWei(inputValue, 14) * 13);
-        // if (destToken.toLowerCase() == "duni") {
-        //   setOutputValue(outValue / 10000000);
-        // }
-        // if (destToken.toLowerCase() == "matic") {
-        //   setOutputValue(outValue / 30000000);
-        // }
-        // if (destToken.toLowerCase() == "sol") {
-        //   setOutputValue(outValue / 23000000);
-        // }
-        // if (destToken.toLowerCase() == "bnb") {
-        //   setOutputValue(outValue / 44000000);
-        // }
+
         setOutputValue(outValue);
       }
     } catch (error) {
@@ -266,17 +241,12 @@ const SwapComponent = () => {
       notifyError(receipt);
     else {
       notifySuccess();
-      setTimeout(() => {
-        window.location.href = "/";
-      }, 4000);
     }
   }
 
   function handleInsufficientAllowance() {
-    notifyError(
-      "Insufficient allowance. Click 'Increase allowance' to increase it."
-    );
-    setSwapBtnText(INCREASE_ALLOWANCE);
+    notifyError("Insufficient allowance");
+    // setSwapBtnText(INCREASE_ALLOWANCE);
   }
 };
 

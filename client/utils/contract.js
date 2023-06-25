@@ -1,6 +1,6 @@
 import { ethers } from "ethers";
-import DuniSwap from "../utils/DuniSwap.json";
-import CustomTokenABI from "../utils/CustomToken.json";
+import UniSwap from "../utils/UniSwap.json";
+import TokenABI from "../utils/Token.json";
 
 export const tokenContract = async (address) => {
   const provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -9,7 +9,7 @@ export const tokenContract = async (address) => {
   if (ethereum) {
     const signer = provider.getSigner();
 
-    const contractReader = new ethers.Contract(address, CustomTokenABI, signer);
+    const contractReader = new ethers.Contract(address, TokenABI, signer);
 
     return contractReader;
   }
@@ -23,8 +23,8 @@ export const contract = async () => {
     const signer = provider.getSigner();
 
     const contractReader = new ethers.Contract(
-      "0x15C4084cE9B3FFac5DbAD7bCD7758a82D7AdEee4",
-      DuniSwap.abi,
+      "0xe5F34237246a16CA2A62d8D538a6FB360fF1fEeb",
+      UniSwap.abi,
       signer
     );
 

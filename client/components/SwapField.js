@@ -5,7 +5,7 @@ const SwapField = React.forwardRef(({ obj }, inputRef) => {
   const { id, value = "", setValue, defaultValue, setToken, ignoreValue } = obj;
 
   return (
-    <div className="flex items-center text-neutral-200 rounded-xl">
+    <div className="flex items-center text-neutral-800 rounded-xl">
       <input
         ref={inputRef}
         className={getInputClassname()}
